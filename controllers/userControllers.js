@@ -173,12 +173,12 @@ const editUser = async (req, res, next) => {
 };
 
 // GET ALL AUTHORS
-const getAuthors = async (req, res, next) => {
+const getAuthors = async (req, res) => {
     try {
         const authors = await User.find().select('-password');
         res.json(authors);
     } catch (error) {
-        return next(new HttpError(error.message || "Failed to fetch authors.", 500));
+        return res.status(500).send({ message: "nahi aaya"})
     }
 };
 
